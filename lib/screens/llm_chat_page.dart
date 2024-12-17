@@ -19,7 +19,7 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  final String baseUrl = 'http://192.168.100.28:5000';
+  final String baseUrl = 'http://192.168.5.45:1234';
   final TextEditingController _controller = TextEditingController();
   final List<Message> _messages = [];
   final ScrollController _scrollController = ScrollController();
@@ -55,7 +55,7 @@ class _ChatPageState extends State<ChatPage> {
 
         // Send documents to your Python server
         final response = await http.post(
-          Uri.parse('http://192.168.100.28:1234/upload_documents'),
+          Uri.parse('http://192.168.5.45:1234/upload_documents'),
           headers: {'Content-Type': 'application/json'},
           body: jsonEncode({
             'documents': documents,
@@ -90,7 +90,7 @@ class _ChatPageState extends State<ChatPage> {
   Future<String?> _getLLMResponse(String prompt) async {
     try {
       final response = await http.post(
-        Uri.parse('$baseUrl/chat'),
+        Uri.parse('$baseUrl/v1/chat/completions'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'messages': [
@@ -106,15 +106,28 @@ class _ChatPageState extends State<ChatPage> {
         }),
       );
 
+      // Add debug prints
+      print('Response status code: ${response.statusCode}');
+      print('Response body: ${response.body}');
+
       if (response.statusCode == 200) {
         final jsonResponse = jsonDecode(response.body);
-        return jsonResponse['response'];  // Changed from ['choices'][0]['message']['content']
+        // Debug print
+        print('Decoded JSON: $jsonResponse');
+
+        final content = jsonResponse['choices'][0]['message']['content'];
+        // Debug print
+        print('Extracted content: $content');
+
+        return content;
       } else {
+        print('Error status code: ${response.statusCode}');
         print('Error response: ${response.body}');
         throw Exception('Failed to get response: ${response.statusCode}');
       }
     } catch (e) {
-      debugPrint('Error: $e');
+      // More detailed error logging
+      print('Detailed error in _getLLMResponse: $e');
       return null;
     }
   }

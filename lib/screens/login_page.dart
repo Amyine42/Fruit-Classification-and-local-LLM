@@ -20,7 +20,7 @@ class _LoginState extends State<Login> {
     return Scaffold(
       backgroundColor: Colors.pink[50],
       appBar: AppBar(
-        title: Text('COVID-19 Tracker'),
+        title: Text('Fruit app and LLM'),
         actions: <Widget>[
           TextButton.icon(
             onPressed: () {
