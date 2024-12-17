@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "832027884135",
+    "firebase_url": "https://smart-app-9002f-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "smart-app-9002f",
+    "storage_bucket": "smart-app-9002f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832027884135:android:386876e69ffcf56d1df2c2",
+        "android_client_info": {
+          "package_name": "com.elayoubi.elayoubi_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoYYpTQOHMlqDOBLj1hqpr4H0_fnKH_tU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
