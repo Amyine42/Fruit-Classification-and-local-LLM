@@ -31,7 +31,6 @@ migrate_working_dir/
 .pub/
 /build/
 assets/fruitcnn.tflite
-
 lib/firebase_options.dart
 
 # Symbolication related
